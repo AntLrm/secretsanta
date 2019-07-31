@@ -23,11 +23,11 @@ class secretdraw():
         """ 
         write roll result on an output file.
         """
-        file_writer = open_file_to_write(ouptut_file)
+        file_writer = self.open_file_to_write(output_file)
         if len(self.roll) > 1:
             previous_name = self.roll[0]
             for name in self.roll[1:]:
-                file_writer.write(previous_name + ">" + name)
+                file_writer.write(previous_name + ">" + name + '\n')
                 previous_name = name
             file_writer.write(previous_name + ">" + self.roll[0])
         else:
@@ -53,9 +53,7 @@ class secretdraw():
         Launch a draw, and select randomly a solution in solution list.
         """
         self.compute_path_list()
-        print(len(self.path_list))
         self.roll = random.choice(self.path_list)
-        print(self.roll)
 
     def compute_path_list(self):
         """
@@ -126,6 +124,12 @@ class secretdraw():
         else:
             print('Warning: ' + name + 'is not in your people input list, please check your input file.')
 
+    def open_file_to_write(self, file_path):
+        try:
+            return open(file_path, "w+")
+        except IOError:
+            print('Error trying to open: ' + file_path + '. Please check existence.')
+            sys.exit()
     
 class tree():
     """

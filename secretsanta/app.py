@@ -30,14 +30,21 @@ class app():
             
             if self.saved_roll_provided:
                 self.secretdraw.set_roll_from_file(self.open_file(self.saved_roll_file))
+		print('Saved roll in ' + self.saved_roll_file + ' set in a new secret santa!')	
             else:
                 self.config_secretdraw()
+		print('Secret santa set, launching roll...')
                 self.secretdraw.mroll()
+		print('Roll done.')
                 if self.output_file_provided :
                     self.secretdraw.write_on_file(self.output_file)
+		    print('Saving roll to ' + self.output_file)
             
             if self.send_mail:
+		print('Sending to mailing list...')
                 self.secretdraw.send()
+		print('All emails sent.')
+		
 
         else:
             self.print_help()
@@ -72,7 +79,7 @@ class app():
         
     def parse_arguments(self, argv):
         try:
-            args = argv.split()
+            args = argv
             opts, args = getopt.getopt(args,"hms:p:i:o:",["saved=", "past=", "input=", "output="])
         except getopt.GetoptError:
             self.print_help()
@@ -93,7 +100,7 @@ class app():
                 self.input_file_provided = True
                 self.input_file = arg
             elif opt in ("-o", "--output"):
-                self.ouptut_file_provided = True
+                self.output_file_provided = True
                 self.output_file = arg
     
     def is_command_ok(self):
@@ -107,6 +114,9 @@ class app():
             if not(self.input_file_provided):
                 print('Input file is mandatory!')
                 return False
+	
+	if not(self.output_file_provided) and not(self.send_mail):
+	    print('Warning, no output file, nor send email request has been provided, the result of the roll will not be stored anywhere!')
 
         return True
                 
