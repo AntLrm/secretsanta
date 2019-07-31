@@ -18,7 +18,6 @@ class secretdraw():
         self.path_list = []
 
 
-    #TODO: test this method
     def write_on_file(self, output_file):
         """ 
         write roll result on an output file.
@@ -46,7 +45,7 @@ class secretdraw():
         """
         set self.roll from a roll file.
         """
-        pass
+	
 
     def mroll(self):
         """
