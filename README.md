@@ -13,6 +13,7 @@ Tested only in python 3.
 
 ## Usage
 While in the package folder in a terminal window or cmd.exe, launch the command:
+
 `python -m secretsanta -i <input_file> -o <output_file>`
 
 Options:
@@ -34,7 +35,7 @@ Input file syntax:
 `toto <> bob`
 
 * Example of input file:
-`
+```
 toto: toto@gg.fr
 bob: bob@bobby.org
 tata: tata_ta@yahii.com
@@ -45,4 +46,4 @@ toto <> tata
 bulle > toto
 bob > bulle
 tony <> bulle
-`
+```
