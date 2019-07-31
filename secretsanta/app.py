@@ -107,13 +107,12 @@ class app():
         """
         Check if there is necessary inputs in command.
         """
-        if self.saved_roll_provided and (self.input_file_provided or self.past_file_provided):
-            print('Warning, a saved roll file has been provided: input file and past constrain file will be ignored!')
+        if self.saved_roll_provided and (input_file_provided or self.past_file_provided):
+            print('For info, a saved roll file has been provided: constrains in input file and past constrain file will be ignored.')
 
-        elif not(self.saved_roll_provided):
-            if not(self.input_file_provided):
-                print('Input file is mandatory!')
-                return False
+        if not(self.input_file_provided) and (self.send_mail):
+            print('Input file with emails is mandatory if emails are to be sent!')
+            return False
 	
 	if not(self.output_file_provided) and not(self.send_mail):
 	    print('Warning, no output file, nor send email request has been provided, the result of the roll will not be stored anywhere!')
