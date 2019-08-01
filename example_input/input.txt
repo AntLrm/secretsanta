@@ -3,11 +3,3 @@ titi: titi@ya.fr
 tutu:
 tata: tata@hug.org
 bob: bob@bob.bob
-alex: al@ex.xx
-alexine: al@ex.ine
-ingnus:
-tap:
-top:
-herbert:
-
-
