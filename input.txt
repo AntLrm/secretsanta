@@ -1,0 +1,18 @@
+toto: toto@gg.com
+titi: titi@ya.fr
+tutu:
+tata: tata@hug.org
+bob: bob@bob.bob
+alex: al@ex.xx
+alexine: al@ex.ine
+ingnus:
+albert:
+
+toto <> titi
+tutu > toto
+alex <> alexine
+ingnus <> alex
+ingnus <> alexine
+albert > bob
+
+
