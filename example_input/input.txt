@@ -3,3 +3,9 @@ titi: titi@ya.fr
 tutu:
 tata: tata@hug.org
 bob: bob@bob.bob
+
+
+toto <> titi
+tutu <> tata
+bob <> toto
+tutu > bob

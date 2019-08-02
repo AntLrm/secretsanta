@@ -113,7 +113,7 @@ class app():
                 self.output_file = arg
             elif opt in ("--iterations"):
                 self.iteration_nbr_provided = True
-                self.iteration_nbr = arg
+                self.iteration_nbr = int(arg)
     
     def is_command_ok(self):
         """
