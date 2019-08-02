@@ -1,7 +1,7 @@
-alex>tata
+tutu>alex
+alex>toto
+toto>tony
+tony>bob
+bob>tata
 tata>titi
-titi>alexine
-alexine>toto
-toto>tutu
-tutu>bob
-bob>alex
+titi>tutu

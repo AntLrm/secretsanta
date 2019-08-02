@@ -26,7 +26,7 @@ Options:
 * `--iteration <iteration number>` : set the maximum iteration number for path finding. Default is 500.
 
 Input file syntax:
-* Adding new participant:
+* Adding new participant (email is not mandatory if not sending emails):
 `toto: toto@email.fr`
 
 * Adding one way constrain (toto can't offer to bob):
@@ -34,6 +34,9 @@ Input file syntax:
 
 * Adding two way constrain:
 `toto <> bob`
+
+* Adding group constrain (all people in group can't offer to each other):
+`[toto, titi, tata]`
 
 * Example of input file:
 ```

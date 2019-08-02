@@ -151,7 +151,6 @@ class app():
         """
         #constrain_search: search for the strings of type "something > something"
         constrain_search = re.search(".+>.+", row)
-        group_search = re.search("\[.+\]", row)
         if constrain_search != None :
             #get the second name (string after ">") 
             name2 = re.search("(?<=>).+", row).group().replace(" ", "")
@@ -167,15 +166,48 @@ class app():
                 return [[name1, name2]]
         
         #TODO group constrain to parse
-        #elif group_search != None :
-        #    name_search = re.search("(?<=\[).+?(?=,)", group_search.group())
-        #    
-        #    while name_search != None :
-
+        #Search for group constrain in row, like [name1, name2, name3]
+        group_search = re.search("(?<=\[).+,+.+(?=\])", row)
+        if group_search != None :
+            names_in_group = self.get_list_from_string(group_search.group())
+            return self.get_constrains_from_group(names_in_group)
         else:     
             return []
        
     
+    def get_constrains_from_group(self, group):
+        """
+        Return all constrains possible in a group of people.
+        """
+        constrain_list = []
+        name1 = group[0]
+        remaining_names = group[1:]
+        while remaining_names != []:
+            for name2 in remaining_names:
+                constrain_list.append([name1, name2])
+                constrain_list.append([name2, name1])
+            name1 = remaining_names[0]
+            remaining_names = remaining_names[1:]
+        return constrain_list
+
+
+
+    def get_list_from_string(self, input_string):
+        """
+        Return actual python list from a string of elements separated by a comma.
+        """
+        names_in_group = []
+        name_sep_index = input_string.find(',') 
+        remaining_names = input_string
+        while name_sep_index != -1 :
+            name = remaining_names[:name_sep_index]
+            names_in_group.append(name.replace(" ", ""))
+            remaining_names = remaining_names[name_sep_index + 1:]
+            name_sep_index = remaining_names.find(',')
+        names_in_group.append(remaining_names.replace(" ", ""))
+        return names_in_group
+
+
     def print_help(self):
         print('python -m secretsanta -m -p <previous roll> -i <input file> -o <output file>')
         print('-m: ask the script to send emails to the secret santa participants')

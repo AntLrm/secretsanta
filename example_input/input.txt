@@ -2,10 +2,13 @@ toto: toto@gg.com
 titi: titi@ya.fr
 tutu:
 tata: tata@hug.org
-bob: bob@bob.bob
+bob: bob@bob.boo
+tony:
+alex: alex@pp-hyut.com
+
+tony > tutu
+titi <> bob
+tata > bob
+[alex, tony, titi]
 
 
-toto <> titi
-tutu <> tata
-bob <> toto
-tutu > bob
