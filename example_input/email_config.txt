@@ -1,9 +1,9 @@
 [email parameters]
 from address = papanoel@polenord.com 
 subject = Secret Santa 
-host = smtp.gmail.com
+host = smtp.test.com
 port number = 465 
-login = antoinelormeau@gmail.com
+login = toto@test.com
 template file path = email_template\email_template.txt 
 
 [optionnal]
