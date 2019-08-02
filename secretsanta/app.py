@@ -4,6 +4,9 @@ import sys
 
 from secretsanta.secretdraw import secretdraw
 
+
+DEFAULT_MAX_ITERATIONS = 500
+
 class app():
     """
     Class to parse command arguments, read input files, and launch the roll.
@@ -15,6 +18,7 @@ class app():
         self.past_file_provided = False
         self.input_file_provided = False
         self.output_file_provided = False
+        self.iteration_nbr_provided = False
         self.past_file = ""
         self.saved_roll_file = ""
                 
@@ -54,6 +58,11 @@ class app():
         """
         Set secretdraw object attributes for roll according to inputs.
         """
+        if self.iteration_nbr_provided:
+            self.secretdraw.pathfind_max_iter = self.iteration_nbr
+        else:
+            self.secretdraw.pathfind_max_iter = DEFAULT_MAX_ITERATIONS
+
         if self.input_file_provided:
             input_reader = self.open_file(self.input_file)
 
@@ -80,7 +89,7 @@ class app():
     def parse_arguments(self, argv):
         try:
             args = argv
-            opts, args = getopt.getopt(args,"hms:p:i:o:",["saved=", "past=", "input=", "output="])
+            opts, args = getopt.getopt(args,"hms:p:i:o:",["iterations=", "saved=", "past=", "input=", "output="])
         except getopt.GetoptError:
             self.print_help()
             sys.exit(2)
@@ -102,6 +111,9 @@ class app():
             elif opt in ("-o", "--output"):
                 self.output_file_provided = True
                 self.output_file = arg
+            elif opt in ("--iterations"):
+                self.iteration_nbr_provided = True
+                self.iteration_nbr = arg
     
     def is_command_ok(self):
         """
@@ -132,8 +144,7 @@ class app():
 
         else:
             return [] 
-
-
+    
     def get_constrain_list_inrow(self, row):
         """
         Return constrain in the read row if any
@@ -172,6 +183,7 @@ class app():
         print('-p <roll file>: previous roll to be considered as constrain')
         print('-i <input filel>: people list file with emails, and constrains')
         print('-o <output file>: roll output file')
+        print('--iterations <iterations number>: set the maximum iterations number for pathfinding. Default is ' + DEFAULT_MAX_ITERATIONS)
    
     def open_file(self, file_path):
         try:

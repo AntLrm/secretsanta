@@ -23,6 +23,7 @@ Options:
 * `-o <output_file>`: ask for output to be saved in output file.
 * `-s <saved_file>`: don't launch secret santa drawing but use a saved file instead. Can be used in combinaison with -m and an input file for launching emails using a past result.
 * `-p <saved_file>`: use a past saved file as an added constrain list.
+* `--iteration <iteration number>` : set the maximum iteration number for path finding. Default is 500.
 
 Input file syntax:
 * Adding new participant:

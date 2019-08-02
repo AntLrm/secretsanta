@@ -16,6 +16,7 @@ class secretdraw():
         self.constrain = {}
         self.roll = []
         self.path_list = []
+        self.pathfind_max_iter = 500
 
 
     def write_on_file(self, output_file):
@@ -45,6 +46,7 @@ class secretdraw():
         """
         set self.roll from a roll file.
         """
+        pass
 
     def mroll(self):
         """
@@ -53,9 +55,14 @@ class secretdraw():
         self.roll = self.getrandom_path()
 
     def getrandom_path(self):
+        """
+        Search for a path in people list with constrains.
+        """
         people_list = list(self.people.keys())
         path = [] 
-        while len(path) < len(people_list):
+        iterations = 0
+        while len(path) < len(people_list) and iterations < self.pathfind_max_iter :
+            iterations += 1
             path = []
             people_not_in_path = people_list[:]
             available_names = people_list[:]
@@ -67,7 +74,12 @@ class secretdraw():
                 for constrain in self.constrain[next_name]:
                     if constrain in available_names:
                         available_names.remove(constrain)
-        return path
+
+        if iterations == self.pathfind_max_iter :
+            print('Max number of iterations reached while searching for a path, your secret santa may be too constrained and may not have a solution.')
+            sys.exit()
+        else:
+            return path
 
     def addconstrains(self, constrain_list):
         """
