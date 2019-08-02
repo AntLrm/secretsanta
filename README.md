@@ -50,4 +50,6 @@ toto <> tata
 bulle > toto
 bob > bulle
 tony <> bulle
+
+[tata, bob, tony]
 ```
