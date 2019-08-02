@@ -1,0 +1,8 @@
+Salut ${NAME} !
+
+Le tirage au sort a été effectué, tu dois offrir un cadeau à ${GIFT_RECIPIENT}
+
+Bien cordialement,
+
+Le Père Noël,
+Pole Nord

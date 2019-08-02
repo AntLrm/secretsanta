@@ -1,0 +1,10 @@
+[email parameters]
+from address = papanoel@polenord.com 
+subject = Secret Santa 
+host = smtp.gmail.com
+port number = 465 
+login = antoinelormeau@gmail.com
+template file path = email_template\email_template.txt 
+
+[optionnal]
+password = 

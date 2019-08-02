@@ -1,14 +1,3 @@
-toto: toto@gg.com
-titi: titi@ya.fr
-tutu:
-tata: tata@hug.org
-bob: bob@bob.boo
-tony:
-alex: alex@pp-hyut.com
-
-tony > tutu
-titi <> bob
-tata > bob
-[alex, tony, titi]
-
-
+toto: antoinelormeau@gmail.com
+titi: antoinelormeau@gmail.com
+tutu: antoinelormeau@gmail.com
