@@ -172,7 +172,6 @@ class app():
                 name1 = re.search(".+?(?=>)", row).group().replace(" ", "")
                 return [[name1, name2]]
         
-        #TODO group constrain to parse
         #Search for group constrain in row, like [name1, name2, name3]
         group_search = re.search("(?<=\[).+,+.+(?=\])", row)
         if group_search != None :

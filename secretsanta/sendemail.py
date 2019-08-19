@@ -21,7 +21,6 @@ class email_send():
     def smtp_config(self):
         self.server = smtplib.SMTP(host=self.host, port=self.port)
         self.server.starttls()
-        print(self.login)
         self.server.login(self.login, self.passwd)
 
     def send_message(self, name, gift_recipient, recipient_address):
