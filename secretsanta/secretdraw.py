@@ -24,22 +24,37 @@ class secretdraw():
         write roll result on an output file.
         """
         file_writer = self.open_file_to_write(output_file)
-        if len(self.roll) > 1:
-            previous_name = self.roll[0]
-            for name in self.roll[1:]:
-                file_writer.write(previous_name + ">" + name + '\n')
-                previous_name = name
-            file_writer.write(previous_name + ">" + self.roll[0])
+        if len(self.gifts_list) > 1:
+            for gift in self.gifts_list:
+                file_writer.write(gift[0] + ">" + gift[1] + '\n')
         else:
             print('Not enough people in your secret santa, sorry...')
             sys.exit()
                 
-    #TODO method to send results to emails
-    def send(self):
+    def get_gift_list_from_roll(self):
+            previous_name = self.roll[0]
+            gifts_list = []
+            for name in self.roll[1:]:
+                gifts_list.append([previous_name, name])
+                previous_name = name
+            gifts_list.append([previous_name, self.roll[0]])
+            return gifts_list
+
+    def send(self, email_send_obj):
         """
         send results to emails.
         """
-        pass
+        if '' in self.people.values():
+            print('All listed in input file need an email address if you wish to send emails.')
+            return False
+        else:
+            email_send_obj.read_template(email_send_obj.template_file)
+            email_send_obj.smtp_config()
+
+            if len(self.gifts_list) > 1:
+                for gift in self.gifts_list:
+                    email_send_obj.send_message(gift[0], gift[1], self.people[gift[0]])
+            return True
 
     #TODO method to set roll from file
     def set_roll_from_file(self, roll_file_reader):
@@ -53,6 +68,7 @@ class secretdraw():
         Launch a draw, and select randomly a solution in solution list.
         """
         self.roll = self.getrandom_path()
+        self.gifts_list = self.get_gift_list_from_roll()
 
     def getrandom_path(self):
         """

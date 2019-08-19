@@ -1,8 +1,11 @@
 import re
 import getopt
 import sys
+import configparser
+import getpass
 
 from secretsanta.secretdraw import secretdraw
+from secretsanta.sendemail import email_send
 
 
 DEFAULT_MAX_ITERATIONS = 500
@@ -46,8 +49,11 @@ class app():
             
             if self.send_mail:
                 print('Sending to mailing list...')
-                self.secretdraw.send()
-                print('All emails sent.')
+                send_email_config = self.parse_email_config()
+                if self.secretdraw.send(send_email_config):
+                    print('All emails sent.')
+                else:
+                    print('No emails sent.')
                 
 
         else:
@@ -89,7 +95,7 @@ class app():
     def parse_arguments(self, argv):
         try:
             args = argv
-            opts, args = getopt.getopt(args,"hms:p:i:o:",["iterations=", "saved=", "past=", "input=", "output="])
+            opts, args = getopt.getopt(args,"hm:s:p:i:o:",["mail=", "iterations=", "saved=", "past=", "input=", "output="])
         except getopt.GetoptError:
             self.print_help()
             sys.exit(2)
@@ -97,8 +103,9 @@ class app():
             if opt == '-h':
                 self.print_help()
                 sys.exit()
-            elif opt == '-m':
+            elif opt in ('-m', "--mail"):
                 self.send_mail = True
+                self.email_config_file = arg
             elif opt in ("-s", "--saved"):
                 self.saved_roll_provided = True
                 self.saved_roll_file = arg
@@ -165,7 +172,6 @@ class app():
                 name1 = re.search(".+?(?=>)", row).group().replace(" ", "")
                 return [[name1, name2]]
         
-        #TODO group constrain to parse
         #Search for group constrain in row, like [name1, name2, name3]
         group_search = re.search("(?<=\[).+,+.+(?=\])", row)
         if group_search != None :
@@ -190,8 +196,24 @@ class app():
             remaining_names = remaining_names[1:]
         return constrain_list
 
+    def parse_email_config(self):
+        email_conf = configparser.ConfigParser()
+        email_conf.read(self.email_config_file)
+        
+        from_address = email_conf['email parameters']['from address']
+        subject = email_conf['email parameters']['subject']
+        host_name = email_conf['email parameters']['host']
+        port_nbr = int(email_conf['email parameters']['port number'])
+        login_address = email_conf['email parameters']['login']
+        passwd = email_conf['optionnal']['password']
+        template_file = email_conf['email parameters']['template file path']
 
+        if passwd == '':
+            print('Please enter password for email account:')
+            passwd = getpass.getpass()
 
+        return email_send(from_address, subject, host_name, port_nbr, login_address, passwd, template_file)
+        
     def get_list_from_string(self, input_string):
         """
         Return actual python list from a string of elements separated by a comma.

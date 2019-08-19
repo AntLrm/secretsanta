@@ -1,0 +1,7 @@
+Hi ${PERSON_NAME} !
+
+The secret santa has been done, you must offer something to ${GIFT_RECIPIENT_NAME}.
+
+Best regards,
+
+Secret santa
