@@ -1,3 +1,10 @@
-toto: toto@gmail.com
-titi: titi@gmail.com
-tutu: tutu@gmail.com
+toto: toto@server.com	
+titi: titi@pehgy.com	
+tutu: tutu@yah-club.com	
+bob: boby@reu.org
+tonny:
+bibi: bibi66@hotemail.gg
+
+[toto, titi, tutu]
+bob <> tonny
+bibi > tutu

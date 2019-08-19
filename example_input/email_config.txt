@@ -1,10 +1,10 @@
 [email parameters]
-from address = papanoel@polenord.com 
+from address = papanoel@polenord.org
 subject = Secret Santa 
-host = smtp.test.com
-port number = 465 
-login = toto@test.com
-template file path = email_template\email_template.txt 
+host = smtp.gmail.com
+port number = 587 
+login = example_login@gmail.com
+template file path = email_template/email_template.txt 
 
 [optionnal]
 password = 

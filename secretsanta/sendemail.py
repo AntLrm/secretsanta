@@ -21,19 +21,18 @@ class email_send():
     def smtp_config(self):
         self.server = smtplib.SMTP(host=self.host, port=self.port)
         self.server.starttls()
+        print(self.login)
         self.server.login(self.login, self.passwd)
 
-    def send_message(self, name, gift_recipient, email):
+    def send_message(self, name, gift_recipient, recipient_address):
         msg = MIMEMultipart()       
      
-        message_text = message_template.substitute(PERSON_NAME=name)
-        message_text = message_template.substitute(GIFT_RECIPIENT=gift_recipient)
+        message_text = self.template.substitute(PERSON_NAME=name, GIFT_RECIPIENT_NAME=gift_recipient)
         
         msg['From']=self.from_address
-        msg['To']=email
+        msg['To']=recipient_address
         msg['Subject']=self.subject
 
-        msg.attach(MIMEText(message, 'plain'))
-
+        msg.attach(MIMEText(message_text, 'plain'))
         self.server.send_message(msg)
         

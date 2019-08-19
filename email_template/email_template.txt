@@ -1,8 +1,7 @@
-Salut ${NAME} !
+Hi ${PERSON_NAME} !
 
-Le tirage au sort a été effectué, tu dois offrir un cadeau à ${GIFT_RECIPIENT}
+The secret santa has been done, you must offer something to ${GIFT_RECIPIENT_NAME}.
 
-Bien cordialement,
+Best regards,
 
-Le Père Noël,
-Pole Nord
+Secret santa

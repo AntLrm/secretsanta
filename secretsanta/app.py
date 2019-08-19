@@ -5,7 +5,7 @@ import configparser
 import getpass
 
 from secretsanta.secretdraw import secretdraw
-from secretsanta.email import email_send
+from secretsanta.sendemail import email_send
 
 
 DEFAULT_MAX_ITERATIONS = 500
