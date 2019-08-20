@@ -1,7 +1,7 @@
 # secretsanta
 A python package to draw a constrained secret santa and send emails to participants.
 
-This package takes into input a mailing list of participants, a constrain list and calculate all draw possible beforre selecting randomly one draw and sending to participants an email telling them who they have to buy a gift for.
+This package takes into input a mailing list of participants, a constrain list and draw a secret santa. Results can be send to all participants by emails through SMTP, telling them who they have to get a gift for.
 
 This includes:
 * one way constrains (i.e. telling bob can't offer to kevin, but kevin can offer to bob).
@@ -11,7 +11,7 @@ This includes:
 * use a past secret santa result as a constrain file for a next one (so that participants don't have to offer to the same person twice in a row for example). 
 * send emails with personnal result to all participants using smtp protocol.
 
-Tested only in python 3.
+Working only in python 3.
 
 ## Usage
 While in the package folder in a terminal window or cmd.exe, launch the command:
@@ -23,7 +23,7 @@ While in the package folder in a terminal window or cmd.exe, launch the command:
 * `-m <smtp_config_file>`: ask to send emails to participants
 * `-i <input_file>`: provide input file containing people list with emails and constrains 
 * `-o <output_file>`: ask for output to be saved in output file.
-* `-s <saved_file>`: don't launch secret santa drawing but use a saved file instead. Can be used in combinaison with -m and an input file for launching emails using a past result.
+* `-s <saved_file>`: don't launch secret santa drawing but use a saved file instead. Can be used in combinaison with -m and an input file (for emails address only) for launching emails using a past result.
 * `-p <saved_file>`: use a past saved file as an added constrain list.
 * `--iteration <iteration number>` : set the maximum iteration number for path finding. Default is 500.
 
