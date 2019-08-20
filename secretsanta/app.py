@@ -36,16 +36,17 @@ class app():
             self.secretdraw = secretdraw()
             
             if self.saved_roll_provided:
-                self.secretdraw.set_roll_from_file(self.open_file(self.saved_roll_file))
+                self.secretdraw.set_giftlist_from_file(self.open_file(self.saved_roll_file))
                 print('Saved roll in ' + self.saved_roll_file + ' set in a new secret santa!')        
             else:
                 self.config_secretdraw()
                 print('Secret santa set, launching roll...')
                 self.secretdraw.mroll()
                 print('Roll done.')
-                if self.output_file_provided :
-                    self.secretdraw.write_on_file(self.output_file)
-                    print('Saving roll to ' + self.output_file)
+
+            if self.output_file_provided :
+                self.secretdraw.write_on_file(self.output_file)
+                print('Saving roll to ' + self.output_file)
             
             if self.send_mail:
                 print('Sending to mailing list...')
@@ -126,7 +127,7 @@ class app():
         """
         Check if there is necessary inputs in command.
         """
-        if self.saved_roll_provided and (input_file_provided or self.past_file_provided):
+        if self.saved_roll_provided and (self.input_file_provided or self.past_file_provided):
             print('For info, a saved roll file has been provided: constrains in input file and past constrain file will be ignored.')
 
         if not(self.input_file_provided) and (self.send_mail):

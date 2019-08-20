@@ -56,15 +56,17 @@ class secretdraw():
                     email_send_obj.send_message(gift[0], gift[1], self.people[gift[0]])
             return True
 
-    #TODO method to set roll from file
-    def set_roll_from_file(self, roll_file_reader):
+    def set_giftlist_from_file(self, saved_file_reader):
         """
-        set self.roll from a roll file.
+        set self.gift_list from a previously saved file.
         """
-        pass
+        self.gifts_list = []
+        for line in saved_file_reader:
+            names_in_line = line.rstrip().split('>')
+            self.gifts_list.append(names_in_line)
 
     def mroll(self):
-        """
+        """                                     
         Launch a draw, and select randomly a solution in solution list.
         """
         self.roll = self.getrandom_path()
