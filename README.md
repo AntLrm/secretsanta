@@ -41,6 +41,8 @@ template file path = email_template/email_template.txt
 password = 
 ```
 
+Password can be kept blank. If so, it will be asked at the beginning of the script.
+
 Email template file contains the text of the message. This text must contain:
 * `${PERSON_NAME}` that will be replaced during the script run by the name of the person to offer a gift.
 * `${GIFT_RECIPIENT_NAME}` that will be replace during the script run by the name of the person to received a gift.
