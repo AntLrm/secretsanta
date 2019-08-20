@@ -4,7 +4,7 @@ subject = Secret Santa
 host = smtp.gmail.com
 port number = 587 
 login = example_login@gmail.com
-template file path = email_template/email_template.txt 
+template file path = example_input/email_template.txt 
 
 [optionnal]
 password = 
