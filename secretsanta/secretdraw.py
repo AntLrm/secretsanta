@@ -90,6 +90,7 @@ class secretdraw():
                 path.append(random.choice(available_names))
                 available_names =self.get_available_names(path) 
 
+
         if iterations == self.pathfind_max_iter :
             print('Max number of iterations reached while searching for a path, your secret santa may be too constrained and may not have a solution.')
             sys.exit()
@@ -103,7 +104,10 @@ class secretdraw():
         for constrain in self.constrain[path[-1]]:
             if constrain in available_names:
                 available_names.remove(constrain)
+        if len(path) == len(list(self.people.keys())) - 1 and len(available_names) == 1 and path[0] in self.constrain[available_names[0]] :
+            available_names = []
         return available_names
+
         
     def addconstrains(self, constrain_list):
         """

@@ -1,6 +1,7 @@
-bob>toto
-toto>bibi
-bibi>titi
-titi>tonny
-tonny>tutu
-tutu>bob
+a2>btc1
+btc1>a1
+a1>btc2
+btc2>d1
+d1>a3
+a3>d2
+d2>a2
