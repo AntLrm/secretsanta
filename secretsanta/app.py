@@ -79,7 +79,6 @@ class app():
                 if people_read != [] :
                     self.secretdraw.addpeople(people_read)
                 if constrain_read_list != [] :
-                    print(constrain_read_list)
                     self.secretdraw.addconstrains(constrain_read_list)
             
 
