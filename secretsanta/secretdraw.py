@@ -89,6 +89,7 @@ class secretdraw():
                 path.append(next_name)
                 people_not_in_path.remove(next_name)
                 available_names = people_not_in_path[:]
+                print(available_names)
                 for constrain in self.constrain[next_name]:
                     if constrain in available_names:
                         available_names.remove(constrain)

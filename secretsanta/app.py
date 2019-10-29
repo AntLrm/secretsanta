@@ -75,14 +75,13 @@ class app():
 
             for row in input_reader:
                 people_read = self.get_people_inrow(row)
+                constrain_read_list = self.get_constrain_list_inrow(row)
                 if people_read != [] :
                     self.secretdraw.addpeople(people_read)
-            
-            input_reader.seek(0)
-            for row in input_reader:
-                constrain_read_list = self.get_constrain_list_inrow(row)
                 if constrain_read_list != [] :
+                    print(constrain_read_list)
                     self.secretdraw.addconstrains(constrain_read_list)
+            
 
         if self.past_file_provided:
             past_reader = self.open_file(self.past_file)

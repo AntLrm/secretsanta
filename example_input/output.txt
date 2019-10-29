@@ -1,6 +1,6 @@
-bob>toto
-toto>bibi
-bibi>titi
 titi>tonny
-tonny>tutu
-tutu>bob
+tonny>toto
+toto>bibi
+bibi>bob
+bob>tutu
+tutu>titi
