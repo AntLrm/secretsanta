@@ -135,6 +135,10 @@ class app():
         if not(self.output_file_provided) and not(self.send_mail):
             print('Warning, no output file, nor send email request has been provided, the result of the roll will not be stored anywhere!')
 
+        if not(self.input_file_provided) and not(self.saved_roll_provided):
+            print('No input provided.')
+            return False
+
         return True
                 
 
