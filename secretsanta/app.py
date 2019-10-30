@@ -229,6 +229,7 @@ class app():
         return names_in_group
 
 
+    #TODO better print help method
     def print_help(self):
         print('python -m secretsanta -m -p <previous roll> -i <input file> -o <output file>')
         print('-m: ask the script to send emails to the secret santa participants')
@@ -236,7 +237,7 @@ class app():
         print('-p <roll file>: previous roll to be considered as constrain')
         print('-i <input filel>: people list file with emails, and constrains')
         print('-o <output file>: roll output file')
-        print('--iterations <iterations number>: set the maximum iterations number for pathfinding. Default is ' + DEFAULT_MAX_ITERATIONS)
+        #print('--iterations <iterations number>: set the maximum iterations number for pathfinding. Default is ' + DEFAULT_MAX_ITERATIONS)
    
     def open_file(self, file_path):
         try:
