@@ -36,6 +36,7 @@ class app():
             self.secretdraw = secretdraw()
             
             if self.saved_roll_provided:
+                self.config_secretdraw()
                 self.secretdraw.set_giftlist_from_file(self.open_file(self.saved_roll_file))
                 print('Saved roll in ' + self.saved_roll_file + ' set in a new secret santa!')        
             else:
