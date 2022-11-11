@@ -238,7 +238,7 @@ class app():
     def print_help(self):
         print('python -m secretsanta -m -p <previous roll> -i <input file> -o <output file>')
         print('-m: ask the script to send emails to the secret santa participants')
-        print('-f <roll file>: run the command without rolling a new secret santa, but using roll from a file' )
+        print('-s <roll file>: run the command without rolling a new secret santa, but using roll from a file' )
         print('-p <roll file>: previous roll to be considered as constrain')
         print('-i <input filel>: people list file with emails, and constrains')
         print('-o <output file>: roll output file')
